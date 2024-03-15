@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="in">
+<head>
+  <meta charset="UTF-8">
+  <title>Jualan - PKWU</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="../style.css">
+  
+</head>
+<body>
+  
+  <div class="semi-body">
+    <h1>Data Penjualan</h1>
+    
+    <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#modalListItem">More..</button>
+    
+    <div class="data-penjualan">
+      <table>
+        <tr>
+          <th>No</th>
+          <th>Tanggal</th>
+          <th>Uraian</th>
+          <th>Jumlah</th>
+          <th>Total</th>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>Jum:15/03/24</td>
+          <td>20 Donat</td>
+          <td>40000</td>
+          <td>40000</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>Sab:16/03/24</td>
+          <td>13 Donat</td>
+          <td>26000</td>
+          <td>26000</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  
+
+
+<!-- Modal -->
+<div class="modal fade" id="modalListItem" tabindex="-1" aria-labelledby="modalListItemLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="modalListItemLabel">List Barang</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        ...
+      </div>
+      <div class="modal-footer text-center justify-content-center">
+      </div>
+    </div>
+  </div>
+</div>
+  
+<script src="//cdn.jsdelivr.net/npm/eruda"></script>
+<script>eruda.init();</script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.min.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="../script.js"></script>
+<script>
+
+const item = [
+  // isi ini
+  // [nama barang, harga]
+  ["Donat", 2000],
+  ["Aoka", 3000]
+];
+
+const myItem = new ShopManager([
+  // isi semua ini
+  {
+    tanggal: "Jum:16/03/24",
+    penjualan: [
+      // isi ini
+      // 1 artinya donat, 20 berarti 20 pcs
+      [1, 20],
+      // kalu 1 hari ada yg beli lebih dari 1 jenis barang, bikin lagi [] nya, jangan lupa koma
+      [2, 4]
+    ]
+  },
+  {
+    tanggal: "Sab:17/03/24",
+    penjualan: [
+      [1, 3],
+      [2, 6]
+    ]
+  }
+]);
+
+const nama = ["Briyan Ibnu AF.", "Annurman Hakim P."];
+
+const m = myItem;
+setTitle("Donat");
+m.updateModal();
+
+
+m.showTable();
+console.log(m);
+
+</script>
+</body>
+</html>
