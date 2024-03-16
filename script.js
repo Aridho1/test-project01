@@ -3,8 +3,6 @@ function ShopManager(data) {
 }
 
 ShopManager.prototype.listItem = function (params = 1) {
-  params -= 1;
-  
   return item[params];
 }
 
@@ -41,7 +39,7 @@ ShopManager.prototype.updateModal = function () {
   modalFooter.innerHTML = htmlCode;
 }
 
-ShopManager.prototype.showTable = function () {
+ShopManager.prototype.showTable = function (tableMode = 1) {
   let result = [];
   let htmlCode = "";
   let table = document.querySelector(".data-penjualan");
@@ -61,6 +59,7 @@ ShopManager.prototype.showTable = function () {
   let namaItem = "";
   let hargaItem = 0;
   let totalHargaItem = 0;
+  let dagang = false;
   
   
   htmlCode = `
@@ -79,6 +78,15 @@ ShopManager.prototype.showTable = function () {
     
     totalItem = this.data[i].penjualan.length;
     item = this.data[i].penjualan;
+    
+    if (totalItem == 0) {
+      if (tableMode == 2) continue;
+      else if (tableMode == 1) {
+        item = [[0, 0]];
+      }
+      totalItem = 1;
+      dagang = false;
+    } else dagang = true;
     
     htmlCode += `
       <tr>
@@ -113,7 +121,8 @@ ShopManager.prototype.showTable = function () {
       
       strJumlah += `${jumlah[ii]}`;
       
-      htmlCode += `${item[ii][2]} ${item[ii][1]} Pcs`;
+      htmlCode += `${item[ii][2]} `;
+      if (dagang) htmlCode += `${item[ii][1]} Pcs`;
     }
     
     totalKeseluruhan += total;
@@ -138,3 +147,13 @@ function setTitle(title) {
   h1 = document.querySelector("h1");
   h1.innerHTML = title;
 }
+
+const checkTampilkanHanyaTerjual = document.querySelector("#flexCheckDefault");
+
+checkTampilkanHanyaTerjual.addEventListener("change", function () {
+  if (this.checked) {
+    m.showTable(2);
+  } else {
+    m.showTable();
+  }
+});

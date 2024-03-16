@@ -9,38 +9,48 @@
 </head>
 <body>
   
-  <div class="semi-body">
-    <h1 style="margin-top: 40px;">Data Penjualan</h1>
+    <div class="container-fluid px-4 py-4" style="background-color: #eaeaea;">
+      
+      <h1 class="mt-4">Data Penjualan</h1>
+      
+      <div class="row mt-4">
+        <div class="col-md-2"><button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#modalListItem">More..</button></div>
+        <div class="col-md-4 mt-1" style="font-size:22px;"><div class="form-check"> <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault"> <label class="form-check-label mt-1" for="flexCheckDefault"> Tampilkan Hanya Terjual </label> </div></div>
+      </div>
+      
+      <div class="row">
+        <div class="col">
+          
+          <div class="data-penjualan">
+            <table>
+              <tr>
+                <th>No</th>
+                <th>Tanggal</th>
+                <th>Uraian</th>
+                <th>Jumlah</th>
+                <th>Total</th>
+              </tr>
+              <tr>
+                <td>1</td>
+                <td>Jum:15/03/24</td>
+                <td>20 Donat</td>
+                <td>40000</td>
+                <td>40000</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Sab:16/03/24</td>
+                <td>13 Donat</td>
+                <td>26000</td>
+                <td>26000</td>
+              </tr>
+            </table>
+          </div>
+          
+        </div>
+      </div>
     
-    <button type="button" class="btn btn-primary mb-3" data-bs-toggle="modal" data-bs-target="#modalListItem">More..</button>
-    
-    <div class="data-penjualan">
-      <table>
-        <tr>
-          <th>No</th>
-          <th>Tanggal</th>
-          <th>Uraian</th>
-          <th>Jumlah</th>
-          <th>Total</th>
-        </tr>
-        <tr>
-          <td>1</td>
-          <td>Jum:15/03/24</td>
-          <td>20 Donat</td>
-          <td>40000</td>
-          <td>40000</td>
-        </tr>
-        <tr>
-          <td>2</td>
-          <td>Sab:16/03/24</td>
-          <td>13 Donat</td>
-          <td>26000</td>
-          <td>26000</td>
-        </tr>
-      </table>
-    </div>
-  </div>
-  
+  </div> 
 
 
 <!-- Modal -->
@@ -66,10 +76,13 @@
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="../script.js"></script>
 <script>
+  
+
 
 const item = [
   // isi ini
   // [nama barang, harga]
+  ["-", 0],
   ["Sosis", 2000],
   ["Otak-Otak", 2000],
   ["Kornet", 2000],
@@ -158,9 +171,24 @@ const myItem = new ShopManager([
     ]
   },
   {
-    tanggal: "Rab:16/03/24",
+    tanggal: "Rab:13/03/24",
     penjualan: [
       [4, 5]
+    ]
+  },
+  {
+    tanggal: "Kam:14/03/24",
+    penjualan: [
+    ]
+  },
+  {
+    tanggal: "Jum:15/03/24",
+    penjualan: [
+    ]
+  },
+  {
+    tanggal: "Sab:16/03/24",
+    penjualan: [
     ]
   }
 ]);
@@ -172,7 +200,7 @@ setTitle("SOSIS BAKAR");
 m.updateModal();
 
 
-m.showTable();
+m.showTable(1);
 console.log(m);
 
 </script>
